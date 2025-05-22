@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - FallDetector
+  - CheckPoint
+  - NextLevel
+  - PreviousLevel
+  - GemTier1
+  - GemTier2
+  - GemTier3
+  - GemTier4
+  - GemTier5
+  - Spike
+  - LowPotion
+  - MediumPotion
+  - HighPotion
+  - MovingPlatform
+  - Mushroom
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 488723055
+    locked: 0
+  - name: MidGround
+    uniqueID: 4199521979
+    locked: 0
+  - name: ForeGround
+    uniqueID: 395516267
+    locked: 0
+  m_RenderingLayers:
+  - Default

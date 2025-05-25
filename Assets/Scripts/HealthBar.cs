@@ -6,7 +6,6 @@ public class HealthBar : MonoBehaviour
     private RectTransform bar;
     private Image barImage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         bar = GetComponent<RectTransform>();

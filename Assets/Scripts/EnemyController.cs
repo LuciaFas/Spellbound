@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,7 +11,10 @@ public class EnemyController : MonoBehaviour
     public float speed;
 
     private bool isWaiting = false;
+    private bool isStunned = false;
+    private float stunTimer = 0f;
     private float waitTimer = 0f;
+
     public Transform player;
     public float lookRadius = 5f;
 
@@ -18,6 +22,10 @@ public class EnemyController : MonoBehaviour
     public float attackRange = 0.8f;
     public LayerMask playerLayer;
     public float attackDamage = 0.2f;
+
+    private float health = 3f;
+    public LogicManager gameManager;
+
 
     void Start()
     {
@@ -31,6 +39,17 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (isStunned)
+        {
+            stunTimer -= Time.deltaTime;
+            if (stunTimer <= 0f)
+            {
+                isStunned = false;
+            }
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         float distToPlayer = Vector2.Distance(transform.position, player.position);
         if (distToPlayer <= lookRadius)
         {
@@ -117,17 +136,37 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            animator.SetTrigger("DeathTrigger");
+            rb.linearVelocity = Vector2.zero;
+            Scoring.totalScore += 50;
+            gameManager.UpdateScore();
+            Invoke(nameof(Die), 1f);
+        }
+
+        isStunned = true;
+        animator.SetTrigger("StunedTrigger");
+        stunTimer = 2f;
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
-
-        if (attackPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     private void Flip()

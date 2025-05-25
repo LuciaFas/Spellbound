@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3770544691443582963}
   - component: {fileID: 8891083140133592424}
   - component: {fileID: 7280462929021186168}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SkeletonWarrior
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 45c4c9609cd403f49bca542dfa5e9d0d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -160,11 +160,11 @@ MonoBehaviour:
   player: {fileID: 0}
   lookRadius: 5
   attackPoint: {fileID: 6514741201502654302}
-  attackRange: 0.5
+  attackRange: 0.8
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  attackDamage: 10
+  attackDamage: 0.2
 --- !u!60 &7280462929021186168
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -214,12 +214,13 @@ PolygonCollider2D:
     - - {x: 1.0636994, y: 4.1584673}
       - {x: 0.4244612, y: 5.1676455}
       - {x: -0.036743164, y: 4.8604918}
-      - {x: -0.5360794, y: 2.6824028}
-      - {x: -1.7614158, y: 3.1260366}
-      - {x: 0.017990947, y: 1.4583449}
+      - {x: -0.09648895, y: 3.6454914}
+      - {x: 0.3642364, y: 2.5453966}
+      - {x: 0.19579256, y: 1.7755482}
+      - {x: 0.37031263, y: 1.1256158}
       - {x: 0.22257411, y: 0.117126286}
       - {x: 1.4367564, y: 0.1557157}
-      - {x: 1.9157652, y: 3.2032151}
+      - {x: 1.8179169, y: 3.144498}
   m_UseDelaunayMesh: 0
 --- !u!1 &4395207045754517679
 GameObject:
@@ -230,9 +231,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6514741201502654302}
-  m_Layer: 6
+  - component: {fileID: 2828748808219768832}
+  m_Layer: 0
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: AttackRadius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,12 +248,48 @@ Transform:
   m_GameObject: {fileID: 4395207045754517679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.94, y: 2.93, z: 0}
+  m_LocalPosition: {x: 0.46, y: 2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 312320201983474570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2828748808219768832
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395207045754517679}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.0035343524, y: -0.0018602253}
+  m_Radius: 2.539529
 --- !u!1001 &635410477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,6 +309,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 00c875278ffc1df4a964f827d0ce626f, type: 3}
       propertyPath: m_Name
       value: SkeletonWarriorPSB
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 00c875278ffc1df4a964f827d0ce626f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -8089108032486474258, guid: 00c875278ffc1df4a964f827d0ce626f, type: 3}
       propertyPath: m_SortingLayer

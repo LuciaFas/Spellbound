@@ -20,6 +20,7 @@ TagManager:
   - MovingPlatform
   - Mushroom
   - Enemy
+  - AttackRadius
   layers:
   - Default
   - TransparentFX

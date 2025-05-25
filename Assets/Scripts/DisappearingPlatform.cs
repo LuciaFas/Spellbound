@@ -4,6 +4,8 @@ public class DisappearingPlatform : MonoBehaviour
 {
     public float delayBeforeDisappear = 0.5f;
     public float fadeDuration = 1f;
+    public float respawnDelay = 3f;
+
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
     private bool playerOnPlatform = false;
@@ -40,5 +42,22 @@ public class DisappearingPlatform : MonoBehaviour
 
         spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         col.enabled = false;
+
+        yield return new WaitForSeconds(respawnDelay);
+
+        elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+        col.enabled = true;
+
+        playerOnPlatform = false;
     }
 }

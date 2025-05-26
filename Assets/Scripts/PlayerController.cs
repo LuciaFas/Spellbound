@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             case "PreviousLevel": SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                 respownPoint = transform.position; break;
 
-            case "Mushroom": player.linearVelocityY = 0f; player.AddForce(new Vector2(player.linearVelocityX, 12f), ForceMode2D.Impulse); break;
+            case "Mushroom": player.linearVelocityY = 0f; player.AddForce(new Vector2(player.linearVelocityX, 9f), ForceMode2D.Impulse); break;
 
             case "GemTier1": Scoring.totalScore += 10; 
                 collision.gameObject.SetActive(false);

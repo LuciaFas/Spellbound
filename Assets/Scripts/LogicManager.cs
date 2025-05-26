@@ -11,6 +11,7 @@ public class LogicManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameOverScreen.SetActive(false);
         Health.totalHealth = 1f;
+        Scoring.totalScore = 0;
     }
 
     public void GameOver()
